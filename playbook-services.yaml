@@ -76,13 +76,13 @@
   #     insertafter: EOF
   #     line: "{{ item }}"
   #   loop:
-  #     - alias ssb="ssh -i .ssh/ssh_okd core@192.168.2.189"
-  #     - alias ssm0="ssh -i ~/.ssh/ssh_okd core@192.168.2.190"
-  #     - alias ssm1="ssh -i ~/.ssh/ssh_okd core@192.168.2.191"
-  #     - alias ssm2="ssh -i ~/.ssh/ssh_okd core@192.168.2.192"
-  #     - alias ssw0="ssh -i ~/.ssh/ssh_okd core@192.168.2.193"
-  #     - alias ssw1="ssh -i ~/.ssh/ssh_okd core@192.168.2.194"
-  #     - alias ssw2="ssh -i ~/.ssh/ssh_okd core@192.168.2.195"   
+  #     - alias ssb="ssh -i .ssh/ssh_okd core@192.168.1.189"
+  #     - alias ssm0="ssh -i ~/.ssh/ssh_okd core@192.168.1.190"
+  #     - alias ssm1="ssh -i ~/.ssh/ssh_okd core@192.168.1.191"
+  #     - alias ssm2="ssh -i ~/.ssh/ssh_okd core@192.168.1.192"
+  #     - alias ssw0="ssh -i ~/.ssh/ssh_okd core@192.168.1.193"
+  #     - alias ssw1="ssh -i ~/.ssh/ssh_okd core@192.168.1.194"
+  #     - alias ssw2="ssh -i ~/.ssh/ssh_okd core@192.168.1.195"   
         
   # Setting up DNS, HTTPD, HA Proxy, TFTPD
   - name: install bind, httpd, haproxy, tftp, dhcpd

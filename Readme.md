@@ -38,14 +38,14 @@ I hardcoded private MAC addresses for my VMs. The way to make a private (unicast
 
 | Name | IP | Mac Address | Role | OS | PXE Boot |
 |------|---------------|--------------------|------------------------------------|---------------------|-----|
-| master0 | 192.168.2.190 | 7A:00:00:00:03:01 | Control plane node #1 | FCOS | Yes |
-| master1 | 192.168.2.191 | 7A:00:00:00:03:02 | Control plane node #2 | FCOS | Yes |
-| master2 | 192.168.2.192 | 7A:00:00:00:03:03 | Control plane node #3 | FCOS | Yes |
-| worker0 | 192.168.2.193 | 7A:00:00:00:03:04 | Worker node #1 | FCOS | Yes |
-| worker1 | 192.168.2.194 | 7A:00:00:00:03:05 | Worker node #2 | FCOS | Yes |
-| worker2 | 192.168.2.195 | 7A:00:00:00:03:06 | Worker node #3 | FCOS| Yes |
-| bootstrap | 192.168.2.189 | 7A:00:00:00:03:07 | Bootstrap, needed to start the cluster | FCOS | Yes |
-| service | 192.168.2.196 | 7A:00:00:00:03:08 | DNS, DHCP, Load balancer, web server | Ubuntu 20/CentOS | No |
+| master0 | 192.168.1.190 | 7A:00:00:00:03:01 | Control plane node #1 | FCOS | Yes |
+| master1 | 192.168.1.191 | 7A:00:00:00:03:02 | Control plane node #2 | FCOS | Yes |
+| master2 | 192.168.1.192 | 7A:00:00:00:03:03 | Control plane node #3 | FCOS | Yes |
+| worker0 | 192.168.1.193 | 7A:00:00:00:03:04 | Worker node #1 | FCOS | Yes |
+| worker1 | 192.168.1.194 | 7A:00:00:00:03:05 | Worker node #2 | FCOS | Yes |
+| worker2 | 192.168.1.195 | 7A:00:00:00:03:06 | Worker node #3 | FCOS| Yes |
+| bootstrap | 192.168.1.189 | 7A:00:00:00:03:07 | Bootstrap, needed to start the cluster | FCOS | Yes |
+| service | 192.168.1.196 | 7A:00:00:00:03:08 | DNS, DHCP, Load balancer, web server | Ubuntu 20/CentOS | No |
 
 Please note that the `hosts.ini` file has these IP addresses hardcoded. I could make this generic, by creating another playbook, using the localhost connection, to generate the IP addresses. Or use Terraform to generate it. Or let the user do this part of the config manually. Laziness won, you'll have to adapt it yourself ! You will also need to assign the service host its static IP address. The reason I'm not using my main network DHCP server is that it doesn't allow hostnames to be sent as part of the DHCP conversation. And this installation is super tricky when it comes to DNS ... 
 
@@ -188,6 +188,6 @@ You can do the same for each of the other nodes, as they all share the same SSH 
 ### Bare metal install
 Prepare your system as explained above, then boot the FCOS image without any config or PXE boot, and run the command below based on the role of the node (bootstrap, master or worker) 
 ```
-coreos-installer install /dev/sda --ignition-url http://192.168.2.186:8080/okd4/[bootstrap|master|worker].ign --insecure-ignition
+coreos-installer install /dev/sda --ignition-url http://192.168.1.186:8080/okd4/[bootstrap|master|worker].ign --insecure-ignition
 ```
 
